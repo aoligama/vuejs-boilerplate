@@ -1,60 +1,45 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+    <div class="hold-content">
+      <v-main>
+        <router-view />
+        <v-snackbar
+          v-model="snackbar.show"
+          :timeout="snackbar.timeout"
+          :color="snackbar.color"
+          rounded="pill"
+        >
+          {{ snackbar.text }}
+          <template v-slot:action="{ attrs }">
+            <v-btn text v-bind="attrs" @click="snackbar.show = false">
+              Fechar
+            </v-btn>
+          </template>
+        </v-snackbar>
+      </v-main>
+    </div>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
   name: 'App',
-
-  components: {
-    HelloWorld,
+  computed: {
+    snackbar() {
+      const sb = { ...this.$store.getters['snackbar/snackbar'] }
+      return sb
+    },
   },
-
-  data: () => ({
-    //
-  }),
-};
+}
 </script>
+<style lang="scss" scoped>
+/* stylelint-disable declaration-no-important */
+
+.hold-content {
+  background-attachment: fixed !important;
+  background-color: #f5f5f5;
+  background-position: center !important;
+  background-size: cover !important;
+  height: 100% !important;
+}
+</style>
