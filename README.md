@@ -1,6 +1,21 @@
-# vuejs-boilerplate
+# 🚀 Boilerplate Vue.js + Vuetify
 
-## Project setup
+This is a boilerplate with Vue.js + Vuetify
+
+## 🛠 Tools
+- Vue.js
+- Vuetify
+- Axios
+- Vue Router
+-  Vuex
+
+
+
+## ⚡️ How to Use
+
+Clone this repo or import the code on your own repo.
+
+## ⚙️ Project setup
 ```
 npm install
 ```
@@ -10,15 +25,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
 ### Lints and fixes files
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
